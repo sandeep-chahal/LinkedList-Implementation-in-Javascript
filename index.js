@@ -71,14 +71,24 @@ class LinkedList {
     this.length--;
     return this.printList();
   }
+  reverse(){
+    let oldHead = this.head;
+    let currentNode = oldHead.next;
+    while(currentNode !== null){
+      this.prepend(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    oldHead.next = null;
+    this.tail = oldHead;
+  }
 }
 
 let myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
-myLinkedList.append(16);myLinkedList.prepend(1);
+myLinkedList.append(16);
+myLinkedList.prepend(1);
 myLinkedList.insert(2, 99);
 myLinkedList.insert(20, 88);
-myLinkedList.remove(2);
-
-
-
+myLinkedList.reverse();
+console.log(myLinkedList)
+myLinkedList.printList();
